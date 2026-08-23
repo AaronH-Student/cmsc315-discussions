@@ -34,3 +34,13 @@ Your reflection should be approximately 150–200 words and address the followin
 1. What concepts or skills did you learn while completing this assignment?
 2. What challenges did you encounter, and how did you overcome them?
 3. Explain the differences between stacks and queues as this relates to real-world applications.
+
+
+## Implementation
+
+- Implemented stack LIFO behavior using standard python list behavior
+- Added empty list error handling to keep test cases moving
+- Implemented queue FIFO behavior using python collections.deque behavior
+- Added empty deque error handling to keep test cases moving
+- Implemented stack test in main to demonstrate LIFO behavior
+- Implemented queue test in main to demonstrate FIFO behavior
