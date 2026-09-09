@@ -41,13 +41,8 @@ class BST:
           whether a value is smaller or larger than the
           current node.
         """
-        # The root is only None when empty, instantiate node with value and make it root
-        if self.root == None:
-            print(f"BST root set to {value}.")
-            self.root = Node(value)
         # Use recursion to traverse the BST and find where value goes
-        else:
-            self._insert_recursive(self.root, value)
+        self.root = self._insert_recursive(self.root, value)
 
     def _insert_recursive(self, node, value):
         """
@@ -60,29 +55,23 @@ class BST:
         - Insert larger values into the right subtree.
         - Return the updated node reference.
         """
-        # If value is less than current Node, traverse left. If no left node exists
-        # then instantiate value as the new left child node.
+        # If node is None then return a new node with the value.
+        if node is None:
+            print(f"Established new node {value}.")
+            return Node(value)
+
+        # If value is less than current Node, traverse left.
         if value < node.value:
-            if node.left:
-                print(f"Value {value} is less than node {node.value}, traversing left.")
-                return self._insert_recursive(node.left, value)
-            else:
-                print(f"Value {value} is less than node {node.value}, no left child present, new child node set.")
-                node.left = Node(value)
-                return node.left
-        # If value is greater than current Node, traverse right. If no right node exists
-        # then instantiate value as the new right child node.
+            print(f"Value {value} is less than node {node.value}, traversing left.")
+            node.left = self._insert_recursive(node.left, value)
+
+        # If value is greater than current Node, traverse right.
         elif value > node.value:
-            if node.right:
-                print(f"Value {value} is greater than node {node.value}, traversing right.")
-                return self._insert_recursive(node.right, value)
-            else:
-                print(f"Value {value} is greater than node {node.value}, no right child present, new child node set.")
-                node.right = Node(value)
-                return node.right
+            print(f"Value {value} is greater than node {node.value}, traversing right.")
+            node.right = self._insert_recursive(node.right, value)
+
         # No duplicates
-        else:
-            return node
+        return node
 
     def search(self, value):
         """
@@ -105,7 +94,7 @@ class BST:
         Implement recursive BST search.
         """
         # None means there was no node
-        if node == None:
+        if node is None:
             return False
 
         # Value found
