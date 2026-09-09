@@ -246,6 +246,7 @@ def main():
     print("BSTs can be used to do things like spell checking.")
     spelling_tree = BST()
     print("\nAdding words into a spell checker \"dictionary\".")
+
     # BSTs can be used to efficiently look up words in a dictionary.
     words = ['hello', 'spelling', 'keyboard', 'verify', 'world', ' checker', 'trees']
     for word in words:
