@@ -34,7 +34,7 @@ def linear_search(lst, target):
     # Return -1 when target is not found
     return -1
     '''
-    # The block below happens to be more faster than the implementation above,
+    # The block below happens to be faster than the implementation above,
     # likely due to the python list index method being implemented in C
     try:
         return lst.index(target)
