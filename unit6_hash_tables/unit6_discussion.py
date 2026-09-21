@@ -35,6 +35,24 @@ def main():
     print("\n=== INSERT OPERATIONS ===")
     print("TODO: Create a dictionary and add multiple key-value pairs.")
 
+    pokedex = {}
+
+    # Python dictionaries allows a program to look up information by a unique key
+    # Under the hood, python dictionaries are hash tables, the keys are hashed
+    # and then the key-value pairs are assigned to a bucket
+    pokedex['Bulbasaur'] = {'type': ['Grass', 'Poison'], 'height': 2.3}
+    pokedex['Charmander'] = {'type': ['Fire'], 'height': 2.0}
+    pokedex['Squirtle'] = {'type': ['Water'], 'height': 1.6}
+    pokedex['Pikachu'] = {'type': ['Electric'], 'height': 1.3}
+    pokedex['Evee'] = {'type': ['Normal'], 'height': 1.0}
+
+    for pokemon, entry in pokedex.items():
+        print(pokemon)
+        print('-' * 15)
+        print('Type: ' + ', '.join(entry['type']))
+        print('Height: ' + str(entry['height']))
+        print()
+
     # ===============================
     # TODO (Student): LOOKUP OPERATIONS
     # ===============================
@@ -46,6 +64,11 @@ def main():
 
     print("\n=== LOOKUP OPERATIONS ===")
     print("TODO: Demonstrate successful key lookups.")
+
+    # The keys (Bulbasaur and Pikachu in the examples below) are hashed and looked up directly
+    # in the pokedex dictionary, retrieving the value
+    print(f"Get 'Bulbasaur': {pokedex['Bulbasaur']}")
+    print(f"Get 'Pikachu': {pokedex['Pikachu']}")
 
     # ===============================
     # TODO (Student): UPDATE OPERATIONS
@@ -60,6 +83,12 @@ def main():
     print("\n=== UPDATE OPERATIONS ===")
     print("TODO: Demonstrate updating an existing key.")
 
+    # Updating the value of a pre-existing key overwrites the original value
+    # with the new one, in this case I just added some information to Bulbasaur
+    print(f"Bulbasaur value before: {pokedex['Bulbasaur']}")
+    pokedex['Bulbasaur'] = {'type': ['Grass', 'Poison'], 'height': 2.3, 'id': 1}
+    print(f"Bulbasaur value before: {pokedex['Bulbasaur']}")
+
     # ===============================
     # TODO (Student): DELETE OPERATIONS
     # ===============================
@@ -71,6 +100,10 @@ def main():
 
     print("\n=== DELETE OPERATIONS ===")
     print("TODO: Demonstrate deleting a key-value pair.")
+
+    print(f"Pokedex before: {pokedex}")
+    pokedex.pop('Evee')
+    print(f"Pokedex after: {pokedex}")
 
     # ===============================
     # TODO (Student): EDGE CASES
@@ -88,6 +121,24 @@ def main():
 
     print("\n=== EDGE CASES ===")
     print("TODO: Demonstrate and explain edge cases.")
+
+    # The key does not exist so get returns None
+    print(f"Lookup missing key (Mew): {pokedex.get('Mew')}")
+
+    # Cannot remove a key that does not exist, pop returns nothing
+    to_remove = 'Mew'
+    print(f"Delete missing key (Mew): {pokedex.pop(to_remove, f'Key \"{to_remove}\" not found...')}")
+
+    # Updating a missing key updates the dictionary/hash table with
+    # the new key-value pair
+    print(f"Pokedex before update to missing key: {pokedex}")
+    pokedex['Mew'] = {'type': ['Psychic'], 'height': 1.3}
+    print(f"Pokedex after update to missing key: {pokedex}")
+
+    empty_pokedex = {}
+    # Attempting to retrieve a key from an empty dictionary is similar to retrieving a
+    # non-existent key from a populated dictionary
+    print(f"Looking up Pikachu in empty pokedex: {empty_pokedex.get('Pikachu', 'No pokemon, explore more!')}")
 
 
 
